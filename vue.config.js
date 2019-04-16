@@ -8,6 +8,9 @@ const resolve = dir => {
 }
 
 module.exports = {
+  configureWebpack: () => ({
+    devtool: 'source-map'
+  }),
   chainWebpack: config => {
     // 这里是对环境的配置，不同环境对应不用的BASE_URL，以便axios的请求地址不同
     config.plugin('define').tap(args => {
@@ -30,6 +33,8 @@ module.exports = {
         cache: true
       })
     }
+    // #region
+    // 将这些指定的文件不进行打包
     var externals = {
       vue: 'Vue',
       axios: 'axios',
@@ -37,6 +42,7 @@ module.exports = {
       vuex: 'Vuex'
     }
     config.externals(externals)
+    // 去cdn上获取，在index.html模版中进行了处理
     const cdn = {
       css: [],
       js: [
@@ -50,6 +56,7 @@ module.exports = {
         '//unpkg.com/axios/dist/axios.min.js'
       ]
     }
+    // #endregion
     config.plugin('html').tap(args => {
       args[0].cdn = cdn
       return args
@@ -57,5 +64,14 @@ module.exports = {
     // 这里是用来给引用文件配置别名，修改的是webpack中的resolve属性
     config.resolve.alias
       .set('@', resolve('src'))
+    // 这里是给文件增加loader，修改的webpack中的module属性
+    config.module
+      .rule('images') // 针对图片进行一个loader处理
+      .use('url-loader') // 让图片使用url-loader来解析
+      .tap(options => {
+        merge(options, {
+          limit: 5120 // 当图片没有超过指定的大小时，转为base64的文件，保存在静态资源中
+        })
+      })
   }
 }
