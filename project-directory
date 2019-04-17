@@ -1,49 +1,84 @@
 ├── node_modules                    # 项目依赖包目录
 │
 ├── public                          # html模版文件夹
-│   ├── favicon.ico                 # 这是显示在浏览器标题前的logo
-│   ├── index.html                  # 这是html模版
+│   ├── favicon.ico                     # 这是显示在浏览器标题前的logo
+│   ├── index.html                      # 这是html模版
 │
 ├── scripts                         # 脚本代码目录
-│   ├── generateComponent.js        # 这是自动创建全局组件或者局部组件的脚本
-│   ├── generateView.js             # 这是自动创建页面组件的脚本
-│   ├── template.js                 # .vue文件的模版，创建页面的时候会自动生成该模版
+│   ├── generateComponent.js            # 这是自动创建全局组件或者局部组件的脚本
+│   ├── generateView.js                 # 这是自动创建页面组件的脚本
+│   ├── template.js                     # .vue文件的模版，创建页面的时候会自动生成该模版
 │
 ├── src                             # 前端代码资源目录
-│   ├── assets                      # 静态资源目录，存放图片和css等，里面的文件夹名称可以根据项目来进行变更
-│   │   ├── icons                   # 用来存放图标的文件夹
-│   │   ├── images                  # 用来存放静态图片的文件夹
-│   │   ├── styles                  # 用来存放css文件的文件夹
+│   ├── assets                          # 静态资源目录，存放图片和css等，里面的文件夹名称可以根据项目来进行变更
+│   │   ├── icons                           # 用来存放图标的文件夹
+│   │   ├── images                          # 用来存放静态图片的文件夹
+│   │   ├── styles                          # 用来存放css文件的文件夹
 │   │
 │   ├── components                  # 公共组件目录
-│   │   ├── global                  # 全局组件目录，该全局组件需被多次使用
-│   │   │   ├── loading             # 公共组件文件夹
-│   │   │   │   ├── index.js        # 用来导出.vue文件，给外面的index.js使用，进行全局组件注册
-│   │   │   │   ├── Loading.vue     # vue组件
-│   │   ├── index.js                # 用来注册全局组件的文件
+│   │   ├── global                      # 全局组件目录，该全局组件需被多次使用
+│   │   │   ├── loading                     # 公共组件文件夹
+│   │   │   │   ├── index.js                    # 用来导出.vue文件，给外面的index.js使用，进行全局组件注册
+│   │   │   │   ├── Loading.vue                 # vue组件
+│   │   ├── index.js                    # 用来注册全局组件的文件
 │   │
 │   ├── mixins                      # 提取的公用方法的目录，使用mixins时，注意做好备注
-│   │   ├── news-mixins.js          # 提取出来的公用方法的文件，指定的模块，在需要的页面中引入，在mixins属性中声明
+│   │   ├── news-mixins.js              # 提取出来的公用方法的文件，指定的模块，在需要的页面中引入，在mixins属性中声明
 │   │
 │   ├── router                      # 前端路由目录，需要在main.js文件中导入
-│   │   ├── news                    # 路由模块之一，根据业务需求来命名
-│   │   │   ├── index.js            # 给该模块注册路由，为路由的自动引入提供数据
-│   │   ├── product                 # 路由模块之一，根据业务需求来命名
-│   │   │   ├── index.js            # 给该模块注册路由，为路由的自动引入提供数据
-│   │   ├── index.js                # 用来进行路由自动导入的文件
+│   │   ├── news                        # 路由模块之一，根据业务需求来命名
+│   │   │   ├── index.js                    # 给该模块注册路由，为路由的自动引入提供数据
+│   │   ├── product                     # 路由模块之一，根据业务需求来命名
+│   │   │   ├── index.js                    # 给该模块注册路由，为路由的自动引入提供数据
+│   │   ├── index.js                    # 用来进行路由自动导入的文件
 │   │
 │   ├── store                       # vuex的文件目录，vue中的状态管理
-│   │   ├── actions.js              # 这个是存放vuex中调用异步方法时的函数
-│   │   ├── getters.js              # 这个是存放获取state里的数据时的函数，
-│   │   ├── index.js                # 这个是导出vuex状态管理器的文件，开发环境下可以在控制台打印操作数据的结果
-│   │   ├── mutation-types.js       # 这个是存放mutations方法的名称，该名称在actions中也有用到
-│   │   ├── mutations.js            # 这个是存放vuex中调用同步方法时的函数
-│   │   ├── state.js                # 这个是存放vuex管理数据的，需要vuex管理数据时，在该文件中声明变量保存
+│   │   ├── actions.js                  # 这个是存放vuex中调用异步方法时的函数
+│   │   ├── getters.js                  # 这个是存放获取state里的数据时的函数，
+│   │   ├── index.js                    # 这个是导出vuex状态管理器的文件，开发环境下可以在控制台打印操作数据的结果
+│   │   ├── mutation-types.js           # 这个是存放mutations方法的名称，该名称在actions中也有用到
+│   │   ├── mutations.js                # 这个是存放vuex中调用同步方法时的函数
+│   │   ├── state.js                    # 这个是存放vuex管理数据的，需要vuex管理数据时，在该文件中声明变量保存
 │   │
 │   ├── views                       # 这是总的页面组件的目录
-│   │   ├── news                    # 这是单个页面组件的目录，和router中的模块名称对应
-│   │   │   ├── detail.vue          # 这是页面组件文件，vue标准是文件的首字母大写，这看个人习惯
+│   │   ├── news                        # 这是单个页面组件的目录，和router中的模块名称对应
+│   │   │   ├── detail.vue                  # 这是页面组件文件，vue标准是文件的首字母大写，这看个人习惯
 │   │
 │   ├── App.vue                     # 这是总的vue组件，最高级的父组件
 │   │
 │   ├── main.js                     # 这是页面的主入口，所有的文件都需要在这个文件中注入后才能正常使用
+│
+├── test                            # 测试文件目录
+│   ├── unit                            # 测试相关文件目录
+│   │   │   ├── .eslintrc.js                # lint文件
+│   │   │   ├── example.spec.js             # 相关文件
+│
+├── .browserslistrc                 # 浏览器版本兼容说明
+│
+├── .editorconfig                   # lint配置
+│
+├── .env                            # 开发环境的网址
+│
+├── .env.prod                       # 生产环境的网址
+│
+├── .env.test                       # 测试环境的网址
+│
+├── .eslintrc.js                    # 全局项目lint检测
+│
+├── .gitignore                      # 上传git仓库时忽略的文件后缀
+│
+├── babel.config.js                 # babel相关的配置
+│
+├── LICENSE                         # MIT条例，创建git仓库时选择
+│
+├── package-lock.json               # 项目依赖插件的网址
+│
+├── package.json                    # 开发环境和生产环境的依赖，运行脚本的别名
+│
+├── postcss.config.js               # css相关的配置
+│
+├── project-directory               # 项目整体目录
+│
+├── README.md                       # 项目相关的信息
+│
+├── vue.config.js                   # 配置vue项目需要的方案
